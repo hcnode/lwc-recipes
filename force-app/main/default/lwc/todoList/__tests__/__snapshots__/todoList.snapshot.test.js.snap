@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`c-todo-list renders multiple list items 1`] = `
+<c-todo-list>
+  #shadow-root(open)
+    <div>
+      <lightning-input>
+        #shadow-root(open)
+      </lightning-input>
+      <ul
+        class="slds-m-top_x-small"
+      >
+        <li>
+          <div
+            class="slds-p-vertical_xx-small"
+          >
+            <p>
+              Explore recipes
+            </p>
+            <p>
+              Priority: 
+              false
+            </p>
+          </div>
+        </li>
+        <li>
+          <div
+            class="slds-p-vertical_xx-small"
+          >
+            <p>
+              Install Ebikes sample app
+            </p>
+            <p>
+              Priority: 
+              false
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+</c-todo-list>
+`;
+
+exports[`c-todo-list renders without any list items as default 1`] = `
+<c-todo-list>
+  #shadow-root(open)
+    <div>
+      <lightning-input>
+        #shadow-root(open)
+      </lightning-input>
+      <ul
+        class="slds-m-top_x-small"
+      />
+    </div>
+</c-todo-list>
+`;
