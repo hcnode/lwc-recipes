@@ -10,7 +10,7 @@ export default class TodoList extends LightningElement {
     _todos = [];
 
     priorityFilter = false;
-
+    newTodoValue = '';
     @api
     get todos() {
         return this._todos;
@@ -19,7 +19,9 @@ export default class TodoList extends LightningElement {
         this._todos = value;
         this.filterTodos();
     }
-
+    get label() {
+        return 'Priority Only';
+    }
     filterTodos() {
         if (this.priorityFilter) {
             this.filteredTodos = this._todos.filter(
@@ -32,6 +34,33 @@ export default class TodoList extends LightningElement {
 
     handleCheckboxChange(event) {
         this.priorityFilter = event.target.checked;
+        this.filterTodos();
+    }
+    handleAddTodo() {
+        this._todos = [
+            ...this._todos,
+            {
+                id: new Date().valueOf(),
+                description: this.newTodoValue,
+                priority: false
+            }
+        ]
+        this.filterTodos();
+    }
+    handleNewTodoKeyDown(event){
+        if(event.keyCode === 13){
+            this.handleAddTodo()
+            this.newTodoValue = ''
+        }else{
+            this.newTodoValue = event.target.value;
+        }
+    }
+    handleSetPriority(event){
+        const id = event.target.getAttribute('data-id')
+        this._todos = this._todos.map(todo => (todo.id == id ? {
+            ...todo,
+            priority: !todo.priority
+        } : todo))
         this.filterTodos();
     }
 }

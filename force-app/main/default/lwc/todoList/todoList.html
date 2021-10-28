@@ -1,16 +1,27 @@
 <template>
     <div>
-        <lightning-input
-            label="Priority Only"
-            type="checkbox"
-            onchange={handleCheckboxChange}
-        ></lightning-input>
-        <ul class="slds-m-top_x-small">
+        <div>
+            create todo: <input type="text" 
+                value={newTodoValue} 
+                onkeyup={handleNewTodoKeyDown}>
+            <br>
+        </div>
+        <div>
+            <input
+                type="checkbox"
+                onchange={handleCheckboxChange}
+            ></input>&nbsp;{label}
+        </div>
+        <div>
+            Todo count: {filteredTodos.length}
+        </div>
+        <ul class="slds-m-top_x-small slds-cls">
             <template for:each={filteredTodos} for:item="todo">
                 <li key={todo.id}>
                     <div class="slds-p-vertical_xx-small">
                         <p>{todo.description}</p>
                         <p>Priority: {todo.priority}</p>
+                        <p><button data-id={todo.id} onclick={handleSetPriority}>toggle priority</button></p>
                     </div>
                 </li>
             </template>
